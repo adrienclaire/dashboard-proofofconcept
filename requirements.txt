@@ -5,4 +5,7 @@ pydeck
 streamlit
 transformers
 tensorflow
-wordcloud
+wordcloud 
+matplotlib
+sklearn
+seaborn
