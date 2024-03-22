@@ -2,10 +2,12 @@ altair
 numpy
 pandas
 pydeck
-streamlit
 transformers
 tensorflow
 wordcloud 
 matplotlib
 sklearn
 seaborn
+streamlit==0.86
+transformers==4.8.1
+torch==1.9.0
