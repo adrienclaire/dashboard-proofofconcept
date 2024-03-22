@@ -37,7 +37,7 @@ def load_data():
     
 @st.cache_data
 def generate_wordcloud(data):
-    return WordCloud(max_words=2000, width=1200, height=600, background_color="white").generate(' '.join(data))
+    return WordCloud(max_words=500, width=1200, height=600, background_color="white").generate(' '.join(data))
 
 @st.cache_data
 def get_ngrams(review, n, g):
