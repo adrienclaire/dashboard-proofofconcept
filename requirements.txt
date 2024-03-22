@@ -2,4 +2,11 @@ altair
 numpy
 pandas
 pydeck
+transformers
+tensorflow
+wordcloud 
+matplotlib
+scikit-learn
+seaborn
 streamlit
+transformers

@@ -1,7 +1,6 @@
-# Welcome to streamlit
+# Welcome to The Projet 7 Dashboard
 
-This is the app you get when you run `streamlit hello`, extracted as its own app.
+This is the app you get when you run `streamlit proof_pf_concept_gpt`, extracted as its own app.
 
-Edit [Hello.py](./Hello.py) to customize this app to your heart's desire. ❤️
+This app is a streamlit Dashboard required in Projet 7 "Proof of Concept) of Openclassroom Machine Learning courses. 
 
-Check it out on [Streamlit Community Cloud](https://st-hello-app.streamlit.app/)
