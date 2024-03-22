@@ -66,7 +66,7 @@ def run():
     # Longueur des avis
     data['review_length'] = data['review'].apply(len)
     st.subheader('Distribution de la longueur des critiques')
-    num_bins = st.slider('Nombre de bins pour l\'histogramme', min_value=10, max_value=100, value=50)
+    num_bins = st.sidebar.slider('Nombre de bins pour l\'histogramme', min_value=10, max_value=100, value=50)
     fig, ax = plt.subplots()
     ax.hist(data['review_length'], bins=num_bins)
     st.pyplot(fig)
@@ -85,7 +85,7 @@ def run():
 
     # Vous pouvez ajouter ici d'autres analyses et visualisations...
     # Select option for sentiment
-    sentiment_choice = st.radio("Choisissez le sentiment des critiques pour le WordCloud :", ('Positif', 'Négatif'))
+    sentiment_choice = st.sidebar.radio("Choisissez le sentiment des critiques pour le WordCloud :", ('Positif', 'Négatif'))
 
     if sentiment_choice == 'Positif':
       # Word cloud for positive reviews
@@ -130,7 +130,7 @@ def run():
         ax.set_ylabel('Count')
         st.pyplot(fig)
     
-    n_gram_choice = st.select_slider('Choisissez le nombre de mots pour l\'analyse n-gramme :', options=[1, 2, 3, 4, 5])
+    n_gram_choice = st.sidebar.select_slider('Choisissez le nombre de mots pour l\'analyse n-gramme :', options=[1, 2, 3, 4, 5])
 
     positive_data = data[data.sentiment == 1]['review']
     negative_data = data[data.sentiment == 0]['review']
@@ -157,14 +157,21 @@ def run():
     # Section pour la prédiction de sentiments
     # Vous devrez intégrer votre modèle de prédiction ici
     st.header('Prédiction de sentiment pour une critique')
-    review_text = st.text_area("Entrez une critique de film pour prédiction de sentiment:")
-    if st.button('Prédire'):
-        # Ici, vous devrez appeler votre modèle de prédiction
-        # prediction = predict_sentiment(review_text)
-        # st.write(f'Le sentiment prédit est: {"Positif" if prediction == 1 else "Négatif"}')
-        st.write('Fonction de prédiction à intégrer')
 
-    # N'oubliez pas de remplacer 'predict_sentiment' par votre fonction de prédiction réelle
+    form = st.form(key='sentiment-form')
+    user_input = form.text_area('Enter your text')
+    submit = form.form_submit_button('Submit')
+
+    if submit:
+        classifier = pipeline("sentiment-analysis")
+        result = classifier(user_input)[0]
+        label = result['label']
+        score = result['score']
+
+        if label == 'POSITIVE':
+            st.success(f'{label} sentiment (score: {score})')
+        else:
+            st.error(f'{label} sentiment (score: {score})')
 
 if __name__ == "__main__":
     run()
