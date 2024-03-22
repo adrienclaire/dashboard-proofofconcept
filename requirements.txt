@@ -6,8 +6,7 @@ transformers
 tensorflow
 wordcloud 
 matplotlib
-sklearn
+scikit-learn
 seaborn
-streamlit==0.86
-transformers==4.8.1
-torch==1.9.0
+streamlit
+transformers
