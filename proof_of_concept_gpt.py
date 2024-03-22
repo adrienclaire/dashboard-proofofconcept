@@ -4,13 +4,16 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+
+# For logging within Streamlit applications
 from streamlit.logger import get_logger
+
+# Machine Learning and Text Processing
+from sklearn.feature_extraction.text import CountVectorizer
 from transformers import TFAutoModelForSequenceClassification, AutoTokenizer, TFDistilBertModel
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras.utils import custom_object_scope
-from tensorflow.keras.models import load_model
-
+from keras.utils import custom_object_scope
+from keras.models import load_model
 
 # Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
 #
@@ -206,7 +209,7 @@ def run():
     def predict_sentiment(review_text):
         encoded_review = tokenizer(review_text, max_length=293, truncation=True, padding='max_length', add_special_tokens=True, return_tensors='tf')
         input_ids = encoded_review['input_ids']
-        ttention_mask = encoded_review['attention_mask']
+        attention_mask = encoded_review['attention_mask']
 
         # Préparer les données d'entrée pour la prédiction
         input_dict = {'input_ids': input_ids, 'attention_mask': attention_mask}
