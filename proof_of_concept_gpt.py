@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-from streamlit.logger import get_logger
-from sklearn.feature_extraction.text import CountVectorizer
 import seaborn as sns
 import numpy as np
 from streamlit.logger import get_logger
