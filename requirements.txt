@@ -7,5 +7,5 @@ transformers
 tensorflow
 wordcloud 
 matplotlib
-sklearn
+scikit-learn
 seaborn
