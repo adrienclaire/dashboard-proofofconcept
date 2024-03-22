@@ -9,7 +9,7 @@ import numpy as np
 from streamlit.logger import get_logger
 from transformers import TFAutoModelForSequenceClassification, AutoTokenizer
 import tensorflow as tf
-
+from transformers import pipeline
 
 
 # Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
